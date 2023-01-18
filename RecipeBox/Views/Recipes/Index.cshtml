@@ -1,0 +1,24 @@
+@{
+  Layout="_Layout";
+}
+
+@using RecipeBox.Models;
+
+<h1>Your Recipes</h1>
+
+@if (@Model.Count == 0)
+{
+  <h3>Get Started by adding a recipe</h3>
+}
+else
+{
+  <ul>
+    @foreach (Recipe recipe in Model)
+    {
+      <li>@Html.ActionLink($"{recipe.Name}", "Details", new { id = recipe.RecipeId })</li>
+    }
+  </ul>
+}
+
+<p>@Html.ActionLink("Home", "Index", "Home")</p>
+<p>@Html.ActionLink("Add a new recipe", "Create")</p>

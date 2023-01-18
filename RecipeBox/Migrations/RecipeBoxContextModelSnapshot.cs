@@ -6,7 +6,7 @@ using RecipeBox.Models;
 
 #nullable disable
 
-namespace Recipe.Migrations
+namespace RecipeBox.Migrations
 {
     [DbContext(typeof(RecipeBoxContext))]
     partial class RecipeBoxContextModelSnapshot : ModelSnapshot
@@ -31,6 +31,7 @@ namespace Recipe.Migrations
                         .HasColumnType("longtext");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.HasKey("RecipeId");
@@ -66,6 +67,7 @@ namespace Recipe.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Cuisine")
+                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.HasKey("TagId");
