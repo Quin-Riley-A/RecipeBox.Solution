@@ -1,0 +1,19 @@
+@{
+  Layout="_Layout";
+}
+
+@model RecipeBox.Models.Tag
+
+<h2>Add a new Cuisine Tag</h2>
+
+
+@using (Html.BeginForm())
+{
+  @Html.LabelFor(model => model.Cuisine)
+  @Html.TextBoxFor(model => model.Cuisine)
+
+  <input type="submit" value="Add new cuisine tag" class="btn btn-danger"/>
+}
+
+<p>@Html.ActionLink("Home", "Index", "Home")</p>
+<p>@Html.ActionLink("Cuisine List", "Index")</p>

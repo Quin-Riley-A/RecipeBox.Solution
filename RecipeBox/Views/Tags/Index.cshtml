@@ -1,0 +1,30 @@
+@{
+  Layout="_Layout";
+}
+
+<nav class="navbar">
+  <ul>
+    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+    <li>@Html.ActionLink("Add a new cuisine tag", "Create")</li>
+  </ul>
+</nav>
+
+@using RecipeBox.Models;
+
+<h1>Cuisine Tags</h2>
+
+@if (@Model.Count == 0)
+{
+  <h3>You'll need to add a new cuisine tag</h3>
+}
+else
+{
+  <ul>
+    @foreach (Tag tag in Model)
+    {
+    <li>@Html.ActionLink($"{tag.Cuisine}", "Details", new{ id = tag.TagId })</li>
+    }
+    </ul>
+}
+
+

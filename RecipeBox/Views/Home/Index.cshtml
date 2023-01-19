@@ -2,9 +2,13 @@
   Layout="_Layout";
 }
 
+<nav class="navbar">
+  <ul>
+    <li>@Html.ActionLink("See a list of recipes", "Index", "Recipes")</li>
+    <li>@Html.ActionLink("See a list of recipe tags", "Index", "Tags")</li>
+  </ul>
+</nav>
+
 <h1>Welcome to a delicious Recipe Box</h1>
 
 <h3>Here you can save, and store recipes with various categorical tags.</h3>
-
-<p>@Html.ActionLink("See a list of recipes", "Index", "Recipes")</p>
-<p>@Html.ActionLink("See a list of recipe tags", "Index", "Tags")</p>

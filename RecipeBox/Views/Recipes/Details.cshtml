@@ -7,7 +7,7 @@
 
 <h2>Recipe Details</h2>
 <hr />
-<h3>@Html.DisplayNameFor(model => model.Name)</h3>
+<h3>@Html.DisplayNameFor(model => model.Name) : @Html.DisplayFor(model => model.Name)</h3>
 
 @if (@Model.JoinEntities.Count == 0)
 {
@@ -33,4 +33,5 @@ else
 <p>@Html.ActionLink("Add Recipe", "Create")</p>
 <p>@Html.ActionLink("Edit Recipe", "Edit", new { id = Model.RecipeId })</p>
 <p>@Html.ActionLink("Add Cuisine", "AddTag", new { id = Model.RecipeId })</p>
+<p>@Html.ActionLink("Delete Recipe", "Delete", new { id = Model.RecipeId })</p>
 <p>@Html.ActionLink("Home", "Index", "Home")</p>
