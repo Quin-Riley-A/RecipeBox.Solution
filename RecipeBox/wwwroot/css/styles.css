@@ -1,0 +1,35 @@
+* {
+  list-style-type: none;
+}
+
+.navbar {
+  background-color: rgba(240, 255, 255, 0.855);
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: sticky;
+}
+
+.navbar ul {
+  display: flex;
+  list-style: none;
+  margin: 10px;
+}
+
+.navbar ul li {
+  font-size: 1rem;
+  padding: 10px 60px;
+}
+
+.navbar ul li a {
+  text-decoration: none;
+  color: rgb(48, 48, 48);
+  transition: all .5s ease;
+}
+
+.navbar ul li a:hover {
+  background-color: black;
+  color: white;
+  padding: 10px;
+}
