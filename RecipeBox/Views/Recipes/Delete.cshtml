@@ -1,3 +1,16 @@
 @{
   Layout="_Layout";
 }
+
+@model RecipeBox.Models.Recipe
+
+<h2>Did this recipe suck?</h2>
+
+@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)
+@using (Html.BeginForm())
+{
+  <input type="submit" value="Delete"/>
+}
+
+<p>@Html.ActionLink("Home", "Index", "Home")</p>
+<p>@Html.ActionLink("Recipe List", "Index")</p>

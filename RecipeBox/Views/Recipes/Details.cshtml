@@ -1,3 +1,35 @@
 @{
   Layout="_Layout";
 }
+
+@using RecipeBox.Models
+@model RecipeBox.Models.Recipe
+
+<h2>Recipe Details</h2>
+<hr />
+<h3>@Html.DisplayNameFor(model => model.Name)</h3>
+
+@if (@Model.JoinEntities.Count == 0)
+{
+  <p>This recipe is not associated with any cuisine tags</p>
+}
+else
+{
+  <h4>This recipe bears the following cuisine tags</h4>
+  <ul>
+  @foreach(RecipeTag join in Model.JoinEntities)
+  {
+    <li>Tags: @join.Tag.Cuisine</li>
+    @using (Html.BeginForm("DeleteJoin", "Recipes"))
+    {
+      @Html.Hidden("joinId", @join.RecipeTagId)
+      <input type="submit" value="Delete"/>
+    }
+  }
+  </ul>
+}
+
+<p>@Html.ActionLink("Recipe List", "Index")</p>
+<p>@Html.ActionLink("Add Recipe", "Create")</p>
+<p>@Html.ActionLink("Edit Recipe", "Edit", new { id = Model.RecipeId })</p>
+<p>@Html.ActionLink("Home", "Index", "Home")</p>
