@@ -1,28 +1,38 @@
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using RecipeBox.Models;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace RecipeBox.Controllers
 {
+  [Authorize]
   public class RecipesController : Controller
   {
     private readonly RecipeBoxContext _db;
+    private readonly UserManager<ApplicationUser> _userManager;
 
-    public RecipesController(RecipeBoxContext db)
+    public RecipesController(UserManager<ApplicationUser> userManager, RecipeBoxContext db)
     {
+      _userManager = userManager;
       _db = db;
     }
 
-    public ActionResult Index()
+    public async Task<ActionResult> Index()
     {
-      List<Recipe> model = _db.Recipes
+      string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+      ApplicationUser currentUser = await _userManager.FindByIdAsync(userId);
+      List<Recipe> userRecipes = _db.Recipes
+                              .Where(entry => entry.User.Id == currentUser.Id)
                               .Include(recipe => recipe.JoinEntities)
                               .ThenInclude(join => join.Tag)
                               .ToList();
-      return View(model);
+      return View(userRecipes);
     }
 
     public ActionResult Create()
@@ -31,7 +41,7 @@ namespace RecipeBox.Controllers
     }
 
     [HttpPost]
-    public ActionResult Create(Recipe recipe)
+    public async Task<ActionResult> Create(Recipe recipe)
     {
       if (!ModelState.IsValid)
       {
@@ -39,6 +49,9 @@ namespace RecipeBox.Controllers
       }
       else
       {
+        string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        ApplicationUser currentUser = await _userManager.FindByIdAsync(userId);
+        recipe.User = currentUser;
         _db.Recipes.Add(recipe);
         _db.SaveChanges();
         return RedirectToAction("Index");
