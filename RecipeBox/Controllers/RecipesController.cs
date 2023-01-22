@@ -96,10 +96,16 @@ namespace RecipeBox.Controllers
       return RedirectToAction("Index");
     }
 
-    public ActionResult AddTag(int id)
+    public async Task<ActionResult> AddTag(int id)
     {
+      string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+      ApplicationUser currentUser = await _userManager.FindByIdAsync(userId);
+      List<Tag> userTags = _db.Tags
+                              .Where(entry => entry.User.Id == currentUser.Id)
+                              .Include(recipe => recipe.JoinEntities)
+                              .ToList();
       Recipe thisRecipe = _db.Recipes.FirstOrDefault(recipes => recipes.RecipeId == id);
-      ViewBag.TagId = new SelectList(_db.Tags, "TagId", "Cuisine");
+      ViewBag.TagId = new SelectList(userTags, "TagId", "Cuisine");
       return View(thisRecipe);
     }
 

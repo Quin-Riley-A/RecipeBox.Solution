@@ -2,6 +2,13 @@
   Layout="_Layout";
 }
 
+<nav class="navbar">
+  <ul>
+    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+    <li>@Html.ActionLink("Back to Cuisine list", "Index")</li>
+  </ul>
+</nav>
+
 @model RecipeBox.Models.Tag
 
 <h2>Add Recipe to this Cuisine</h2>
@@ -16,5 +23,4 @@
   @Html.DropDownList("RecipeId")
 
   <input type="submit" value="Save" class="btn btn-danger"/>
-
 }
