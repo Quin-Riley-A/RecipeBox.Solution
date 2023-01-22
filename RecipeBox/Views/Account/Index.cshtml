@@ -5,10 +5,25 @@
 <nav class="navbar">
   <ul> 
     <li>@Html.ActionLink("Register a new Account", "Register") </li>
-    <li>@Html.ActionLink("Return to Homepage", "Index","Home")</li>
+    <li>@Html.ActionLink("Return to Homepage", "Index", "Home")</li>
   </ul>
 </nav>
-  <hr/>
-  <h2>Authentication with Identity</h2>
+  
+<hr/>
+  <h2>Account</h2>
   <p>Become a resident of Flavor Town by creating a new account or go back to the Homepage.</p>
-  <hr />
+<hr />
+
+@if(User.Identity.IsAuthenticated)
+{
+  <p>Welcome to Flavor Town @User.Identity.Name!</p>
+  @using (Html.BeginForm("LogOff", "Account"))
+  {
+    <input type="submit" class="btn btn-danger" value="Log out"/>
+  }
+}
+else
+{
+  <p>@Html.ActionLink("Register", "Register")</p>
+  <p>@Html.ActionLink("Log In", "Login")</p>
+}
