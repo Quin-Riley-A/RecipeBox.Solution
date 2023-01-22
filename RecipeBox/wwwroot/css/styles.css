@@ -1,5 +1,17 @@
 * {
+  color:rgb(48, 48, 48);
   list-style-type: none;
+}
+
+body{
+  background-image: url(../img/recipeBG_img.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.container {
+  background-color: rgba(240, 255, 255, 0.50);
+  padding: 20px;
 }
 
 .navbar {
@@ -9,6 +21,7 @@
   justify-content: center;
   align-items: center;
   position: sticky;
+  width: 100%;
 }
 
 .navbar ul {
