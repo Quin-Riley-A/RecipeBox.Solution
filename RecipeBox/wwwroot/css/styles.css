@@ -10,8 +10,9 @@ body{
 }
 
 .container {
-  background-color: rgba(240, 255, 255, 0.50);
+  background-color: rgba(240, 255, 255, 0.75);
   padding: 20px;
+  font-weight: 600;
 }
 
 .navbar {
@@ -44,5 +45,6 @@ body{
 .navbar ul li a:hover {
   background-color: black;
   color: white;
-  padding: 10px;
+  padding: 5px;
+  
 }

@@ -9,5 +9,6 @@ namespace RecipeBox.Models
     [Required(ErrorMessage = "Field cannot be empty!")]
     public string Cuisine { get; set; }
     public List<RecipeTag> JoinEntities { get; }
+    public ApplicationUser User { get; set; }
   }
 }
