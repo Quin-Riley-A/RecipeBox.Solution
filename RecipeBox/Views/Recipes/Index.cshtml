@@ -2,13 +2,6 @@
   Layout="_Layout";
 }
 
-<nav class="navbar">
-  <ul>
-    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-    <li>@Html.ActionLink("Add a new recipe", "Create")</li>
-  </ul>
-</nav>
-
 @using RecipeBox.Models;
 
 <h1>Recipes for @User.Identity.Name</h1>
@@ -26,4 +19,7 @@ else
     }
   </ul>
 }
-
+<hr/>
+<div class="bottom_nav">
+<p>@Html.ActionLink("Cuisine List", "Index", "Tags") |  @Html.ActionLink("Add a Recipe", "Create")</p>
+</div>
