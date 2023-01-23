@@ -7,6 +7,25 @@
     <link rel="stylesheet" href="~/css/styles.css">
   </head>
   <body>
+    <nav class="navbar">
+  <ul>
+    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+    <li>@Html.ActionLink("Account", "Index", "Account")</li>
+    <li>
+      @if(User.Identity.IsAuthenticated)
+      {
+        @using (@Html.BeginForm("LogOff", "Account"))
+        {
+          <input type="submit" class="btn btn-danger" value="Log out" />
+        }
+      }
+      else
+      {
+        @Html.ActionLink("Log In", "Login", "Account")
+      }
+    </li>
+  </ul>
+</nav>
     <div class="container">
       @RenderBody()
     </div>

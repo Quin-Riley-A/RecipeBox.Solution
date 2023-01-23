@@ -2,16 +2,8 @@
   Layout = "_Layout";
 }
 
-<nav class="navbar">
-  <ul> 
-    <li>@Html.ActionLink("Register a new Account", "Register") </li>
-    <li>@Html.ActionLink("Return to Homepage", "Index", "Home")</li>
-  </ul>
-</nav>
-  
 <hr/>
   <h2>Account</h2>
-  <p>Become a resident of Flavor Town by creating a new account or go back to the Homepage.</p>
 <hr />
 
 @if(User.Identity.IsAuthenticated)
@@ -24,6 +16,8 @@
 }
 else
 {
+  <p>Become a resident of Flavor Town by creating a new account or go back to the Homepage.</p>
   <p>@Html.ActionLink("Register", "Register")</p>
+  <p>or</p>
   <p>@Html.ActionLink("Log In", "Login")</p>
 }
