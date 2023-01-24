@@ -8,6 +8,10 @@
 <h2>Recipe Details</h2>
 <hr />
 <h3>@Html.DisplayNameFor(model => model.Name) : @Html.DisplayFor(model => model.Name)</h3>
+<h5>Ingredients:</h5>
+<p>@Html.DisplayNameFor(model => model.Ingredients) : @Html.DisplayFor(model => model.Ingredients)</p>
+<h5>Directions:</h5>
+<p>@Html.DisplayNameFor(model => model.Instruction) : @Html.DisplayFor(model => model.Instruction)</p>
 
 @if (@Model.JoinEntities.Count == 0)
 {
@@ -19,7 +23,7 @@ else
   <ul>
   @foreach(RecipeTag join in Model.JoinEntities)
   {
-    <li>Tags: @join.Tag.Cuisine</li>
+    <li>Cuisine: <a href="../../Tags/Details/@join.Tag.TagId"> @join.Tag.Cuisine </a> </li>
     @using (Html.BeginForm("DeleteJoin", "Recipes"))
     {
       @Html.Hidden("joinId", @join.RecipeTagId)
@@ -28,6 +32,8 @@ else
   }
   </ul>
 }
+
+<hr/>
 
 <p>@Html.ActionLink("Recipe List", "Index")</p>
 <p>@Html.ActionLink("Add Recipe", "Create")</p>

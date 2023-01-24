@@ -2,13 +2,6 @@
   Layout="_Layout";
 }
 
-<nav class="navbar">
-  <ul>
-    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-    <li>@Html.ActionLink("Account", "Index", "Account")</li>
-  </ul>
-</nav>
-
 @model RecipeBox.Models.Recipe
 
 <h2>Add A Recipe For @User.Identity.Name</h2>
@@ -26,7 +19,7 @@
   @Html.LabelFor(model => model.Instruction)
   @Html.TextBoxFor(model => model.Instruction)
 
-  <input type="submit" value="Add new recipe" class="btn btn-danger"/>
+  <input type="submit" value="Add new recipe" class="btn btn-danger" id="add_recipe_btn"/>
 }
 
 

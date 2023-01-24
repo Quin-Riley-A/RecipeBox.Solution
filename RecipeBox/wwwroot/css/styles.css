@@ -51,14 +51,20 @@ body{
 }
 
 label {
-  margin-left: 5px;
-  margin-right: 5px;
+  display: grid;
 }
 
 input {
-  margin-left: 10px;
+  display: grid;
+  margin: 10px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .bottom_nav a {
+  margin: 10px;
+}
+
+#add_recipe_btn {
   margin: 10px;
 }
