@@ -12,6 +12,8 @@
 <p>@Html.DisplayNameFor(model => model.Ingredients) : @Html.DisplayFor(model => model.Ingredients)</p>
 <h5>Directions:</h5>
 <p>@Html.DisplayNameFor(model => model.Instruction) : @Html.DisplayFor(model => model.Instruction)</p>
+<h5>Rating:</h5>
+<p>@Html.DisplayFor(model => model.Rating)</p>
 
 @if (@Model.JoinEntities.Count == 0)
 {
