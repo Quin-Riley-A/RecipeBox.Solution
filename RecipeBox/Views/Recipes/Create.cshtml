@@ -14,10 +14,10 @@
   @Html.TextBoxFor(model => model.Name)
 
   @Html.LabelFor(model => model.Ingredients)
-  @Html.TextBoxFor(model => model.Ingredients)
+  @Html.TextAreaFor(model => model.Ingredients)
   
   @Html.LabelFor(model => model.Instruction)
-  @Html.TextBoxFor(model => model.Instruction)
+  @Html.TextAreaFor(model => model.Instruction)
   
   <p>@Html.ValidationMessageFor(model => model.Rating, "", new { @style = "font-weight: 600; color: red;"})</p>
   @Html.LabelFor(model => model.Rating)

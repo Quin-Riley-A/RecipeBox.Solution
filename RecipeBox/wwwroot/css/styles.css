@@ -14,6 +14,11 @@ body{
   padding: 20px;
   font-weight: 600;
   text-align: center;
+  z-index: -1;
+}
+
+.container li {
+  margin-right: 50px;
 }
 
 .navbar {
@@ -52,10 +57,11 @@ body{
 
 label {
   display: grid;
+  
 }
 
 input {
-  display: grid;
+  display: flex;
   margin: 10px;
   margin-left: auto;
   margin-right: auto;
@@ -67,4 +73,9 @@ input {
 
 #add_recipe_btn {
   margin: 10px;
+}
+
+textarea {
+  resize: vertical;
+  width: 240px;
 }
